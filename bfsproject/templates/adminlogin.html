@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login | Bank Website</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style>
+    body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    }
+
+    .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+
+    .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    padding: 30px;
+    text-align: center;
+    width: 400px;
+    }
+
+    h2 {
+    margin-bottom: 30px;
+    }
+
+    form {
+    display: flex;
+    flex-direction: column;
+    }
+
+    label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    }
+
+    input[type="text"], input[type="password"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 20px;
+    }
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+</style>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Admin Login</h2>
+      <h1 style="color:Red">{{msg}}</h1>
+
+      <form method="post" action="{% url 'checkadminlogin' %}">
+        {% csrf_token %}
+        <table align=center>
+<tr>
+<td><label>Username</label></td>
+<td><input type="text" name="ausername" required="required"/></td>
+</tr>
+
+<tr><td></td></tr>
+
+<tr>
+<td><label>Password</label></td>
+<td><input type="password" name="apassword" required="required"/></td>
+</tr>
+
+<tr><td></td></tr>
+<tr><td></td></tr>
+
+<tr align=center>
+<td colspan=2><input type="submit" value="Login" class="button"></td>
+</tr>
+</table>
+</form>
+    </div>
+    </div>
+</body>
+</html>

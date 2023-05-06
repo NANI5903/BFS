@@ -1,0 +1,91 @@
+body {
+      margin: 0;
+      padding: 0;
+      background-color: #333333;
+    }
+
+    .present {
+      background-image: url("https://img.freepik.com/free-vector/digital-rupee-concept-background-with-rupee-symbol_1017-36812.jpg?w=826&t=st=1676739366~exp=1676739966~hmac=4cc778d0d63fd042f8c2d6ae77756c23bf546144758f5134e694d1b3f9d604c2");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      text-align: center;
+    }
+
+      .present h1 {
+      font-size: 4rem;
+      margin: 0;
+      padding: 0;
+      }
+
+
+    .present p {
+      font-size: 2rem;
+      margin: 0;
+      padding: 0;
+      margin-top: 1rem;
+    }
+
+    .buttons {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .buttons button {
+      background-color: #ffffff;
+      color: #333333;
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 2rem;
+      margin: 0 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .buttons button:hover {
+      background-color: #f1f1f1;
+    }
+
+    .carousel {
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+    }
+
+    .open-account {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+    }
+
+    .open-account button {
+      background-color: #ffffff;
+      color: #333333;
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .open-account button:hover {
+      background-color: #f1f1f1;
+    }

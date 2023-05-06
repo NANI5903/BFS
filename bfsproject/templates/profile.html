@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body::-webkit-scrollbar {
+        display: none;
+      }
+      body {
+        overflow-x: hidden; /* Hide horizontal scrollbar */
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+        transition: background-color 0.5s;
+      }
+
+      .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background: linear-gradient(to bottom, #003366 0%, #00ffff 100%);
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+
+      .sidenav a {
+        padding: 18px 8px 18px 32px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #ffff;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .sidenav a:hover {
+        color: #868686;
+      }
+
+      .navbtn:focus {
+        border: 2px solid transparent;
+        background: white;
+        color: black;
+      }
+
+      .topnav {
+        list-style: none;
+        display: flex;
+      }
+      .topright_profile {
+        float: right;
+      }
+
+      #main {
+        transition: margin-left 0.5s;
+        padding: 0px;
+      }
+
+      @media screen and (max-height: 450px) {
+        .sidenav {
+          padding-top: 15px;
+        }
+        .sidenav a {
+          font-size: 18px;
+        }
+      }
+
+      nav {
+        padding-top: 10px;
+      }
+
+      input[type="checkbox"] {
+        -webkit-appearance: none;
+        display: none;
+        visibility: hidden;
+      }
+
+      .bar {
+        position: relative;
+        cursor: pointer;
+        width: 50px;
+        height: 40px;
+      }
+
+      .bar span {
+        position: absolute;
+        width: 45px;
+        height: 7px;
+        background: black;
+        border-radius: 100px;
+        display: inline-block;
+        transition: 0.3s ease;
+        left: 0;
+      }
+
+      .bar span.top {
+        top: 0;
+      }
+
+      .bar span.middle {
+        top: 17px;
+      }
+
+      .bar span.bottom {
+        bottom: 0;
+      }
+
+      input[type]:checked ~ span.top {
+        transform: rotate(45deg);
+        transform-origin: top left;
+        width: 48px;
+        left: 5px;
+      }
+
+      input[type]:checked ~ span.bottom {
+        transform: rotate(-45deg);
+        transform-origin: top left;
+        width: 48px;
+        bottom: -1px;
+        box-shadow: 0 0 10px #495057;
+      }
+
+      input[type]:checked ~ span.middle {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mySidenav" class="sidenav">
+      <h3 style="color: #f1f1f1; padding-left: 20px; margin-bottom: 1rem">
+        HORIZON BANK
+      </h3>
+      <!--   -->
+       <a href="{% url 'dashboard' %}" class="navbtn">Dashboard</a>
+      <a href="{% url 'transfer' %}" class="navbtn">Transfer</a>
+      <a href="{% url 'navbartosavings' %}" class="navbtn">Saving</a>
+      <a href="{% url 'viewtransactions' %}" class="navbtn">Transaction History</a>
+      <a href="{% url 'profile' %}" class="navbtn">Profile</a>
+      <a href="{% url 'debitcardofuser' %}" class="navbtn">Cards</a>
+      <a href="{% url 'navbartoinsurance' %}" class="navbtn">Insurance</a>
+      <a href="{% url 'navbartoloans' %}" class="navbtn">Loans</a>
+      <a href="{% url 'navbartologin' %}" class="navbtn">Logout</a>
+    </div>
+    <div id="main">
+      <nav>
+        <div
+          class="row"
+          style="border-bottom: 1px solid black; padding-bottom: 1rem"
+        >
+          <div
+            class="col-4"
+            style="display: flex; flex-direction: row; gap: 1rem"
+          >
+            <div
+              style="font-size: 25px; cursor: pointer; margin-left: 1rem"
+              class="menu"
+            >
+              <label for="check" class="bar" style="scale: 0.7">
+                <input
+                  id="check"
+                  type="checkbox"
+                  name="checked"
+                  onclick="operatenav()"
+                />
+
+                <span class="top"></span>
+                <span class="middle"></span>
+                <span class="bottom"></span>
+              </label>
+            </div>
+            <div><h3>Horizion Bank</h3></div>
+          </div>
+          <div class="col-7"></div>
+          <div class="col-1">
+            <div class="profile">
+              <a href="profile"
+                ><img
+                  src="{% static 'Images/Login_bg.jpg' %}"
+                  alt=""
+                  style="
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50px;
+                    margin-left: 50px;
+                  "
+              /></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+
+    <script>
+      function operatenav() {
+        if (document.getElementById("check").checked === true) {
+          openNav();
+        } else {
+          closeNav();
+        }
+      }
+
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "340px";
+        document.getElementById("main").style.marginLeft = "340px";
+        document.body.style.backgroundColor = "rgba(0,0,0,0)";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.body.style.backgroundColor = "white";
+      }
+    </script>
+  <div class="container-l" style="padding: 2rem;background-color: whitesmoke;">
+    <style>
+                        .card{
+                            /* border: 2px solid black; */
+                            min-width: 300px;
+                            max-width: 580px;
+                            height:190px;
+                            padding: 1.5rem;
+                            box-shadow:  12px 12px 24px #898989,
+                -12px -12px 24px #ffffff;
+                        }
+
+                        .profile_column_3{
+                            display: flex;
+                            flex-direction: column;
+                            gap:2rem;
+                        }
+
+                        .maxcard{
+                            min-width: 300px;
+                            max-width: 580px;
+                            height: 400px;
+                            /* border:1px solid black; */
+                            margin-top: 3rem;
+                            padding: 1.5rem;
+                            box-shadow:  12px 12px 24px #898989,
+                -12px -12px 24px #ffffff;
+                        }
+
+                        .card> h5{
+                            padding: 0.5rem;
+                            font-size:600;
+                            font-weight:550;
+                        }
+                    .card> h3{
+                            margin:0.5rem;
+                            font-size:2rem;
+                            letter-spacing:0.1rem;
+                        }
+                        .card > h6{
+                            padding: 0.5rem;
+                        }
+
+                        .maxcard> h5{
+                            padding: 0.5rem;
+                            font-size:600;
+                            font-weight:550;
+                            padding-bottom: 2rem;
+                        }
+                    .maxcard> h3{
+                            margin:0.5rem;
+                            font-size:2rem;
+                            letter-spacing:0.1rem;
+                        }
+                        .maxcard > h6{
+                            padding: 0.5rem;
+                            padding-left:1rem;
+                            font-size: large;
+                            font-weight: 420;
+                        }
+
+                        .card > .gain{
+                    color: rgb(76, 236, 76);
+                }
+                .card > .loss{
+                    color: red;
+                }
+
+
+    @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Kumbh Sans',
+            sans-serif;
+        /* background-color: hsl(185, 75%, 39%); */
+        display: flex;
+        align-items: center;
+        /* min-height: 100vh; */
+        /* background-image: url(https://digitshack.com/codepen/mentor4/bg-pattern-top.svg), url(https://digitshack.com/codepen/mentor4/bg-pattern-bottom.svg); */
+        background-repeat: no-repeat, no-repeat;
+        background-position: right 48vw bottom 40vh,
+            left 45vw top 44vh;
+    }
+
+    .con {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .wrapper {
+        /* width: 600px; */
+        height: 650px;;
+        background-color: #FFF;
+        border-radius: 15px;
+        overflow: hidden;
+        margin: 1rem;
+        margin-right:2rem;
+    }
+
+    .wrapper > img{
+        width: 600px;
+        height:200px;
+    }
+    .content img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 4px solid #FFF;
+        margin-top: -90px;
+        margin-bottom: 1px;
+    }
+
+    .content h2 {
+        color: hsl(229, 23%, 23%);
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .content h2 span {
+        color: hsl(227, 10%, 46%);
+        font-weight: 400;
+    }
+
+    .content p {
+        color: hsl(227, 10%, 46%);
+        font-size: 13px;
+    }
+
+
+
+    .btn-donate {
+        --clr-font-main: hsla(0 0% 20% / 100);
+        --btn-bg-1: hsla(194 100% 69% / 1);
+        --btn-bg-2: hsla(217 100% 56% / 1);
+        --btn-bg-color: hsla(360 100% 100% / 1);
+        --radii: 0.5em;
+        cursor: pointer;
+        padding: 0.9em 1.4em;
+        min-width: 120px;
+        min-height: 44px;
+        font-size: var(--size, 1rem);
+        font-family: "Segoe UI", system-ui, sans-serif;
+        font-weight: 500;
+        transition: 0.8s;
+        background-size: 280% auto;
+        background-image: linear-gradient(325deg, var(--btn-bg-2) 0%, var(--btn-bg-1) 55%, var(--btn-bg-2) 90%);
+        border: none;
+        border-radius: var(--radii);
+        color: var(--btn-bg-color);
+        box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5), 0px 5px 5px -1px rgba(58, 125, 233, 0.25), inset 4px 4px 8px rgba(175, 230, 255, 0.5), inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+    }
+
+    .btn-donate:hover {
+        background-position: right top;
+    }
+
+    .btn-donate:is(:focus, :focus-within, :active) {
+        outline: none;
+        box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .btn-donate {
+            transition: linear;
+        }
+    }
+
+
+                    </style>
+
+                                <div class="row" style="margin:2rem;"><h1>Profile</h1></div>
+                                <div class="row align-items-center">
+                                    <div class="col-4">
+                                        <div class="con">
+                            <div class="wrapper">
+                            <img src="../static/Images/Login_bg.jpg" alt="">
+                            <div class="content">
+                                <img src="{{customer.customer_image.url}}" alt="">
+                                <div class="row">
+                                <div>
+                                    <h3 style="font-weight: 600;">{{customer.fullname}}</h3>
+                                <h2>{{cgender}}</h2>
+                                <br>
+                                    <h6>The purpose of your lives is to be happy.</h6>
+                                    <br>
+                                    <button class="btn-donate">
+                            Donate now
+                        </button>
+                        <br><br>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div>
+                                            <div class="card">
+                                                <h5>Balance</h5>
+                                <h3 class="gain">{{customer.amount}}<span style="padding:0.5rem;">₹</span></h3>
+                                <h6 style="font-weight: 500;color: #898989;">Your Total Balance.</h6>
+                                            </div>
+                                            <div class="maxcard">
+                                                <h5>Account Detail</h5>
+                                <h6><span >Account No</span><span style="float: right;text-align: left;width:150px;">{{customer.id}}</span></h6>
+                                <h6><span >Account Type</span><span style="float: right;text-align: left;width:150px;">Saving</span></h6>
+                                <h6><span >Adhaar Number</span><span style="float: right;text-align: left;width:150px;">{{customer.aadharno}}</span></h6>
+                                <h6><span >Pan Number</span><span style="float: right;text-align: left;width:150px;">{{customer.panno}}</span></h6>
+                                <h6><span >Account Status</span><span style="float: right;text-align: left;width:150px;">Active</span></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 profile_column_3">
+                                        <div class="card">
+                                            <h5>Credit Score</h5>
+                                <h3 style="color: blue;">1159<span style="padding:0.5rem;"></span></h3>
+                                <h6 style="font-weight: 500;color: #898989;">This is your score based on the transactions you have performed</h6>
+                                        </div>
+                                        <div class="card">
+                                            <h5>Login Detail</h5>
+                                <h6><span >Username</span><span style="float: right;">{{customer.username}}</span></h6>
+                                <h6><span >Password</span><span style="float: right;font-size: large;place-content:center;">{{customer.password}}</span></h6>
+                            </div>
+                                        <div class="card">
+                                            <h5>Contact Detail</h5>
+                                <h6><span >Mobile No</span><span style="padding-left: 2rem;">{{customer.contactno}}</span></h6>
+                                <h6><span >Email</span><span style="padding-left:4.5rem;">{{customer.email}}</span></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+  </body>
+</html>

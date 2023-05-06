@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body::-webkit-scrollbar {
+        display: none;
+      }
+      body {
+        overflow-x: hidden; /* Hide horizontal scrollbar */
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+        transition: background-color 0.5s;
+      }
+
+      .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background: linear-gradient(to bottom, #003366 0%, #00ffff 100%);
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+
+      .sidenav a {
+        padding: 18px 8px 18px 32px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #ffff;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .sidenav a:hover {
+        color: #868686;
+      }
+
+      .navbtn:focus {
+        border: 2px solid transparent;
+        background: white;
+        color: black;
+      }
+
+      .topnav {
+        list-style: none;
+        display: flex;
+      }
+      .topright_profile {
+        float: right;
+      }
+
+      #main {
+        transition: margin-left 0.5s;
+        padding: 0px;
+      }
+
+      @media screen and (max-height: 450px) {
+        .sidenav {
+          padding-top: 15px;
+        }
+        .sidenav a {
+          font-size: 18px;
+        }
+      }
+
+      nav {
+        padding-top: 10px;
+      }
+
+      input[type="checkbox"] {
+        -webkit-appearance: none;
+        display: none;
+        visibility: hidden;
+      }
+
+      .bar {
+        position: relative;
+        cursor: pointer;
+        width: 50px;
+        height: 40px;
+      }
+
+      .bar span {
+        position: absolute;
+        width: 45px;
+        height: 7px;
+        background: black;
+        border-radius: 100px;
+        display: inline-block;
+        transition: 0.3s ease;
+        left: 0;
+      }
+
+      .bar span.top {
+        top: 0;
+      }
+
+      .bar span.middle {
+        top: 17px;
+      }
+
+      .bar span.bottom {
+        bottom: 0;
+      }
+
+      input[type]:checked ~ span.top {
+        transform: rotate(45deg);
+        transform-origin: top left;
+        width: 48px;
+        left: 5px;
+      }
+
+      input[type]:checked ~ span.bottom {
+        transform: rotate(-45deg);
+        transform-origin: top left;
+        width: 48px;
+        bottom: -1px;
+        box-shadow: 0 0 10px #495057;
+      }
+
+      input[type]:checked ~ span.middle {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mySidenav" class="sidenav">
+      <h3 style="color: #f1f1f1; padding-left: 20px; margin-bottom: 1rem">
+        HORIZON BANK
+      </h3>
+      <!--   -->
+      <a href="{% url 'dashboard' %}" class="navbtn">Dashboard</a>
+      <a href="{% url 'transfer' %}" class="navbtn">Transfer</a>
+      <a href="{% url 'navbartosavings' %}" class="navbtn">Saving</a>
+      <a href="{% url 'viewtransactions' %}" class="navbtn">Transaction History</a>
+      <a href="{% url 'profile' %}" class="navbtn">Profile</a>
+      <a href="{% url 'debitcardofuser' %}" class="navbtn">Cards</a>
+      <a href="{% url 'navbartoinsurance' %}" class="navbtn">Insurance</a>
+      <a href="{% url 'navbartoloans' %}" class="navbtn">Loans</a>
+      <a href="{% url 'navbartologin' %}" class="navbtn">Logout</a>
+    </div>
+    <div id="main">
+      <nav>
+        <div
+          class="row"
+          style="border-bottom: 1px solid black; padding-bottom: 1rem"
+        >
+          <div
+            class="col-4"
+            style="display: flex; flex-direction: row; gap: 1rem"
+          >
+            <div
+              style="font-size: 25px; cursor: pointer; margin-left: 1rem"
+              class="menu"
+            >
+              <label for="check" class="bar" style="scale: 0.7">
+                <input
+                  id="check"
+                  type="checkbox"
+                  name="checked"
+                  onclick="operatenav()"
+                />
+
+                <span class="top"></span>
+                <span class="middle"></span>
+                <span class="bottom"></span>
+              </label>
+            </div>
+            <div><h3>Horizion Bank</h3></div>
+          </div>
+          <div class="col-7"></div>
+          <div class="col-1">
+            <div class="profile">
+              <a href="profile"
+                ><img
+                  src="{{customer.customer_image.url}}  "
+                  alt=""
+                  style="
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50px;
+                    margin-left: 50px;
+                  "
+              /></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+<div>
+            <div class="container-l">
+                <style>
+            table{
+                width: 100%;
+                padding: 1rem;
+                border-collapse: collapse;
+            }
+            th, td {
+    /* border-bottom: 2px solid #958b8b; */
+    padding: 1rem;
+    }
+            .transaction_heading{
+                font-size: 1.2rem;
+                text-align:center;
+            }
+            th {
+    background-color: #0391f6;
+    color: white;
+    }
+            tr>td{
+                text-align: center;
+                font-size:1.2rem;
+            }
+            .gain{
+                color: green;
+            }
+            .loss{
+                color: red;
+            }
+
+            tr:nth-child(even) {background-color: #f2f2f2;}
+        </style>
+            <div class="row"><h1 style="margin:1.2rem;">Transactions</h1>
+            <hr></div>
+            <div class="row">
+            <b><h1>Total Transactions = {{count}} <br><br></h1></b>
+                <table align="center" border="2">
+<table>
+  <thead>
+    <tr>
+      <th>Transaction ID</th>
+      <th>From Account</th>
+      <th>To Account</th>
+      <th>Amount</th>
+      <th>Purpose</th>
+      <th>Transfer Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for transfer in transfers %}
+      <tr>
+        <td>{{ transfer.transaction_id }}</td>
+        <td>{{ transfer.fromaccount }}</td>
+        <td>{{ transfer.toaccount }}</td>
+        <td>{{ transfer.amount }}</td>
+        <td>{{ transfer.purpose }}</td>
+        <td>{{ transfer.transfertime }}</td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="6">No transfers found.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script>
+      function operatenav() {
+        if (document.getElementById("check").checked === true) {
+          openNav();
+        } else {
+          closeNav();
+        }
+      }
+
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "340px";
+        document.getElementById("main").style.marginLeft = "340px";
+        document.body.style.backgroundColor = "rgba(0,0,0,0)";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.body.style.backgroundColor = "white";
+      }
+    </script>
+  </body>
+</html>

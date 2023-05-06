@@ -1,0 +1,441 @@
+
+    <!DOCTYPE html>
+    {% load static %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Horizon Bank</title>
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+        crossorigin="anonymous"
+        />
+        <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"
+        ></script>
+     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/Contactus.css" />
+    <style>
+    body::-webkit-scrollbar {
+    display: none;
+    }
+    body{
+        overflow-x: hidden; /* Hide horizontal scrollbar */
+    }
+
+button>a{
+text-decoration:none;
+color:white;
+}
+        .NavItems{
+            list-style: none;
+            display: flex;
+            gap:2rem;
+            font-size:22px;
+            font-weight: 400;
+        }
+
+        .NavItems > li > a{
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        li{
+            width: fit-content;
+        }
+
+
+        .navbar{
+            padding: 30px;
+            background:transparent;
+            color:white;
+        }
+
+        .login_btn > button{
+            outline: none;
+            border-radius: 50px;
+            border: 2px solid white;
+            padding: 10px;
+            font-size: large;
+            font-weight: 400;
+            width:150px;
+            background: transparent;
+            color: white;
+
+    }
+
+    body{
+        background: url(https://source.unsplash.com/eICUFSeirc0);
+        background-size: contain;
+        box-sizing: border-box;
+        padding: 0%;
+        margin: 0%;
+
+    }
+
+    .home_contents{
+        margin-top:2rem;
+    }
+    .bitimage{
+        width:600px;
+        height:600px;
+    }
+    .bitimage>img{
+        width:600px;
+        height:600px;
+    }
+    .landtext{
+        color: aliceblue;
+    }
+    .landtext > h1{
+        padding-top: 80px;
+        font-size:3.5rem;
+    }
+    .landbtn{
+        padding-top: 50px;
+        padding-left: 50px;
+        display: flex;
+        gap:2rem;
+    }
+    .landbtn > button{
+        width:150px;
+        padding: 15px;
+        border-radius: 50px;
+        outline: none;
+        border: 2px solid white;
+        background: transparent;
+        color: white;
+    }
+
+    #netbanking{
+        background-color: white;
+        padding-top: 4rem;
+        color: black;
+    }
+
+    .netbanktext{
+        padding-top: 100px;
+    }
+
+    .netbanktext > ul>li >img{
+        width: 30px;
+        height: 30px;
+        margin-right: 20px;
+    }
+
+    .netbanktext{
+        padding-right: 50px;
+    }
+    .netbanktext >ul{
+        margin-top: 2rem;
+        text-align: left;
+    }
+
+    .netbanktext >ul>li{
+        list-style: none;
+        margin-top: 10px;
+        font-size: larger;
+    }
+    .netbankbtn > button{
+        padding: 10px;
+        margin: 2rem;
+        width:155px;
+    }
+
+    #services{
+        background-color: white;
+        padding-top: 3rem;
+    }
+    .services_img > img{
+        width:150px;
+        height:150px;
+        margin:25px;
+    }
+    .card{
+        align-items: center;
+        width:400px;
+        height: 400px;
+        margin: 30px;
+        border-radius: 20px;
+        box-shadow:  20px 20px 60px #949494,
+                -20px -20px 60px #ffffff;
+    }
+    .card >h6{
+        margin: 35px;
+        font-size: large;
+        font-weight: 400;
+        padding-left: 20px;
+
+    }
+    #contactus{
+        background-color: #ffffff;
+    }
+
+    section{
+        width: 100%;
+    }
+
+button {
+ --color: black;
+ font-family: inherit;
+ display: inline-block;
+ width: 8em;
+ height: 3.2em;
+ margin: 20px;
+ position: relative;
+ overflow: hidden;
+ border: 2px solid var(--color);
+ transition: color .5s;
+ z-index: 1;
+ font-size: 17px;
+ border-radius: 6px;
+ font-weight: 500;
+ color: var(--color);
+}
+
+
+button:before {
+ content: "";
+ position: absolute;
+ z-index: -1;
+ background: var(--color);
+ height: 150px;
+ width: 200px;
+ border-radius: 50%;
+}
+
+button:hover {
+ color: #fff;
+}
+
+button:before {
+ top: 100%;
+ left: 100%;
+ transition: all .7s;
+}
+
+button:hover:before {
+ top: -30px;
+ left: -30px;
+}
+
+button:active:before {
+ background: #3a0ca3;
+ transition: background 0s;
+}
+
+    </style>
+    </head>
+    <body>
+        <div class="container-l">
+            <div class="row navbar">
+                <div class="col-4">
+                    <h1>HORIZON BANK</h1>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-4">
+                    <ul class="NavItems">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#netbanking">Net Banking</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contactus">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <div class="login_btn">
+                        <button><a href="{% url 'welcomelogintologin' %}">Login</a></button>
+                    </div>
+                </div>
+            </div>
+            <section id="home">
+                <div class="container-md  home_contents">
+                    <div class="row">
+                        <div class="col-5 landtext">
+                            <h1>Make your online banking experience wonderful.</h1>
+                            <h5>Let's Begin this beautiful journey</h5>
+                            <div class="row landbtn">
+                                <button>Get Started</button>
+                                <button><a href="{% url 'welcomelogintologin' %}">Login</a></button>
+
+                            </div>
+                        </div>
+                        <div class="col-5 bitimage">
+                            <img src="{% static 'Images/undraw_digital_currency_qpak.svg' %}" alt="">
+                        </div>
+                    </div>
+                    <br>
+                    <br><br>
+                    <br><br>
+                </div>
+            </section>
+            <section id="netbanking">
+                <div class="container-md  netbank_contents">
+                    <div class="row">
+                        <div class="col-6 netbanktext">
+                            <h1>4 Step Banking System</h1>
+                            <br>
+                            <h5>You just need to follow 4 steps to start banking with us.Lets introduce to you with account creation steps</h5>
+                            <ul>
+                                <li><img src="{% static 'Images/circle-check-regular.svg' %}"></img>Fill Your Bank Details.</li>
+                                <li><img src="{% static 'Images/circle-check-regular.svg' %}"></img>Upload your KYC Documents.</li>
+                                <li><img src="{% static 'Images/circle-check-regular.svg' %}"></img>Validate your Documents and Mobile Number.</li>
+                                <li><img src="{% static 'Images/circle-check-regular.svg' %}"></img>Create Username and Password</li>
+                            </ul>
+                            <div class="row netbankbtn">
+                                <button>Read More</button>
+                            </div>
+                        </div>
+                        <div class="col-5 bitimage">
+                            <img src="{% static 'Images/undraw_software_engineer_re_tnjc.svg'%}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="services">
+                <div class="container-md">
+    <div class="row"><h1 style="text-align: center;">Services</h1></div>
+    <br>
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="services_img">
+                    <img src="{% static 'Images/undraw_security_on_re_e491.svg' %}" alt="">
+                </div>
+                <h4>Secure Payment</h4>
+                <h6>The security of the Customer is the Number One Priority for us.</h6>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="services_img">
+                    <img src="{% static 'Images/undraw_credit_card_re_blml.svg' %}" alt="">
+                </div>
+                <h4>Secure Payment</h4>
+                <h6>The security of the Customer is the Number One Priority for us.</h6>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="services_img">
+                    <img src="{% static 'Images/undraw_vault_re_s4my.svg' %}" alt="">
+                </div>
+                <h4>Secure Payment</h4>
+                <h6>The security of the Customer is the Number One Priority for us.</h6>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="services_img">
+                    <img src="{% static 'Images/undraw_bitcoin_p2p_re_1xqa.svg' %}" alt="">
+                </div>
+                <h4>Secure Payment</h4>
+                <h6>The security of the Customer is the Number One Priority for us.</h6>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="services_img">
+                    <img src="{% static 'Images/undraw_time_management_re_tk5w.svg' %}" alt="">
+                </div>
+                <h4>Secure Payment</h4>
+                <h6>The security of the Customer is the Number One Priority for us.</h6>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="services_img">
+                    <img src="{% static 'Images/loan.svg' %}" alt="">
+                </div>
+                <h4>Secure Payment</h4>
+                <h6>The security of the Customer is the Number One Priority for us.</h6>
+            </div>
+        </div>
+    </div>
+                </div>
+            </section>
+            <section id="contactus">
+                <h1 style="color: black; text-align: center;padding-top:50px;">Contact Us</h1>
+                <br>
+                <br>
+                <div class="container">
+            <span class="big-circle"></span>
+            <img src="img/shape.png" class="square" alt="" />
+            <div class="form">
+                <div class="contact-info">
+                    <h3 class="title">Let's get in touch</h3>
+                    <p class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+                        dolorum adipisci recusandae praesentium dicta!
+                    </p>
+
+                    <div class="info">
+                        <div class="information">
+                            <img src="{% static 'Images/address-card-solid.svg' %}" class="icon" alt="" />
+                            <p>K L University, Vijayawada</p>
+                        </div>
+                        <div class="information">
+                            <img src="{% static 'Images/envelope-solid.svg' %}" class="icon" alt="" />
+                            <p>horizonbank@gmail.com</p>
+                        </div>
+                        <div class="information">
+                            <img src="{% static 'Images/phone-solid.svg'%}" class="icon" alt="" />
+                            <p>123-456-789</p>
+                        </div>
+                    </div>
+
+                    <div class="social-media">
+                        <p>Connect with us :</p>
+                        <div class="social-icons">
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <span class="circle one"></span>
+                    <span class="circle two"></span>
+
+                    <form action="index.html" autocomplete="off">
+                        <h3 class="title">Contact us</h3>
+                        <div class="input-container">
+                            <input type="text" name="name" class="input" />
+                            <span>Username</span>
+                        </div>
+                        <div class="input-container">
+                            <input type="email" name="email" class="input" />
+                            <span>Email</span>
+                        </div>
+                        <div class="input-container">
+                            <input type="tel" name="phone" class="input" />
+                            <span>Phone</span>
+                        </div>
+                        <div class="input-container textarea">
+                            <textarea name="message" class="input"></textarea>
+                            <span>Message</span>
+                        </div>
+                        <input type="submit" value="Send" class="btn" />
+                    </form>
+                </div>
+            </div>
+        </div>
+            </section>
+        </div>
+    </body>
+    </html>

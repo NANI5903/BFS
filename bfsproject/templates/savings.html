@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body::-webkit-scrollbar {
+        display: none;
+      }
+      body {
+        overflow-x: hidden; /* Hide horizontal scrollbar */
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+        transition: background-color 0.5s;
+      }
+
+      .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background: linear-gradient(to bottom, #003366 0%, #00ffff 100%);
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+
+      .sidenav a {
+        padding: 18px 8px 18px 32px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #ffff;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .sidenav a:hover {
+        color: #868686;
+      }
+
+      .navbtn:focus {
+        border: 2px solid transparent;
+        background: white;
+        color: black;
+      }
+
+      .topnav {
+        list-style: none;
+        display: flex;
+      }
+      .topright_profile {
+        float: right;
+      }
+
+      #main {
+        transition: margin-left 0.5s;
+        padding: 0px;
+      }
+
+      @media screen and (max-height: 450px) {
+        .sidenav {
+          padding-top: 15px;
+        }
+        .sidenav a {
+          font-size: 18px;
+        }
+      }
+
+      nav {
+        padding-top: 10px;
+      }
+
+      input[type="checkbox"] {
+        -webkit-appearance: none;
+        display: none;
+        visibility: hidden;
+      }
+
+      .bar {
+        position: relative;
+        cursor: pointer;
+        width: 50px;
+        height: 40px;
+      }
+
+      .bar span {
+        position: absolute;
+        width: 45px;
+        height: 7px;
+        background: black;
+        border-radius: 100px;
+        display: inline-block;
+        transition: 0.3s ease;
+        left: 0;
+      }
+
+      .bar span.top {
+        top: 0;
+      }
+
+      .bar span.middle {
+        top: 17px;
+      }
+
+      .bar span.bottom {
+        bottom: 0;
+      }
+
+      input[type]:checked ~ span.top {
+        transform: rotate(45deg);
+        transform-origin: top left;
+        width: 48px;
+        left: 5px;
+      }
+
+      input[type]:checked ~ span.bottom {
+        transform: rotate(-45deg);
+        transform-origin: top left;
+        width: 48px;
+        bottom: -1px;
+        box-shadow: 0 0 10px #495057;
+      }
+
+      input[type]:checked ~ span.middle {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mySidenav" class="sidenav">
+      <h3 style="color: #f1f1f1; padding-left: 20px; margin-bottom: 1rem">
+        HORIZON BANK
+      </h3>
+      <!--   -->
+      <a href="{% url 'dashboard' %}" class="navbtn">Dashboard</a>
+      <a href="{% url 'transfer' %}" class="navbtn">Transfer</a>
+      <a href="{% url 'navbartosavings' %}" class="navbtn">Saving</a>
+      <a href="{% url 'viewtransactions' %}" class="navbtn">Transaction History</a>
+      <a href="{% url 'profile' %}" class="navbtn">Profile</a>
+      <a href="{% url 'debitcardofuser' %}" class="navbtn">Cards</a>
+      <a href="{% url 'navbartoinsurance' %}" class="navbtn">Insurance</a>
+      <a href="{% url 'navbartoloans' %}" class="navbtn">Loans</a>
+      <a href="{% url 'navbartologin' %}" class="navbtn">Logout</a>
+    </div>
+    <div id="main">
+      <nav>
+        <div
+          class="row"
+          style="border-bottom: 1px solid black; padding-bottom: 1rem"
+        >
+          <div
+            class="col-4"
+            style="display: flex; flex-direction: row; gap: 1rem"
+          >
+            <div
+              style="font-size: 25px; cursor: pointer; margin-left: 1rem"
+              class="menu"
+            >
+              <label for="check" class="bar" style="scale: 0.7">
+                <input
+                  id="check"
+                  type="checkbox"
+                  name="checked"
+                  onclick="operatenav()"
+                />
+
+                <span class="top"></span>
+                <span class="middle"></span>
+                <span class="bottom"></span>
+              </label>
+            </div>
+            <div><h3>Horizion Bank</h3></div>
+          </div>
+          <div class="col-7"></div>
+          <div class="col-1">
+            <div class="profile">
+              <a href="profile"
+                ><img
+                  src="../static/Images/Login_bg.jpg"
+                  alt=""
+                  style="
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50px;
+                    margin-left: 50px;
+                  "
+              /></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+
+    <script>
+      function operatenav() {
+        if (document.getElementById("check").checked === true) {
+          openNav();
+        } else {
+          closeNav();
+        }
+      }
+
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "340px";
+        document.getElementById("main").style.marginLeft = "340px";
+        document.body.style.backgroundColor = "rgba(0,0,0,0)";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.body.style.backgroundColor = "white";
+      }
+    </script>
+  <title>Savings Account</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+		header {
+			background-color: #0072C6;
+			color: #fff;
+			padding: 20px;
+		}
+		h1 {
+			margin: 0;
+			font-size: 36px;
+		}
+		main {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			margin: 20px auto;
+			max-width: 1200px;
+		}
+		.card {
+			background-color: #fff;
+			border-radius: 5px;
+			padding: 20px;
+			margin: 20px;
+			width: 300px;
+			box-shadow: 0px 0px 10px #888888;
+		}
+		.card h2 {
+			font-size: 24px;
+			margin-top: 0;
+			margin-bottom: 10px;
+		}
+		.card p {
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+		.card button {
+			background-color: #0072C6;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.card button:hover {
+			background-color: #005580;
+		}
+		.amount-card {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: #fff;
+			border-radius: 5px;
+			padding: 20px;
+			margin: 20px;
+			width: 600px;
+			box-shadow: 0px 0px 10px #888888;
+		}
+		.amount-card h2 {
+			font-size: 24px;
+			margin-top: 0;
+			margin-bottom: 10px;
+		}
+		.amount-card .amounts {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			font-size: 24px;
+			font-weight: bold;
+		}
+		.amount-card .amounts p {
+			margin: 0;
+			margin-bottom: 10px;
+		}
+		.amount-card .amounts .target-amount {
+			color: #0072C6;
+		}
+	</style>
+</head>
+  </body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Banking Website</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+ .card-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.card {
+  width: 30%;
+}
+
+      .card {
+        flex-basis: calc(33.33% - 20px);
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .card h2 {
+        margin-top: 0;
+      }
+
+      .card p {
+        margin-bottom: 20px;
+        font-size: 16px;
+      }
+
+      .card form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card label {
+        margin-bottom: 10px;
+      }
+
+      .card input[type="tel"],
+      .card input[type="text"],
+      .card input[type="number"],
+      .card select {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+
+      .card input[type="submit"] {
+        background-color: #0047ab;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .card input[type="submit"]:hover {
+        background-color: #002b5c;
+      }
+
+      footer {
+        background-color: #ddd;
+        padding: 20px;
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .card {
+          flex-basis: 100%;
+          margin: 0 0 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+   <div class="card-container">
+  <div class="card">
+    <h2>Recharge</h2>
+    <p>Recharge your mobile, DTH or data card</p>
+    <form>
+      <label for="recharge-type">Recharge Type</label>
+      <select id="recharge-type" name="recharge-type" required>
+        <option value="">Select Recharge Type</option>
+        <option value="Mobile">Mobile</option>
+        <option value="DTH">DTH</option>
+        <option value="Data Card">Data Card</option>
+      </select>
+
+      <label for="recharge-number">Number</label>
+      <input type="text" id="recharge-number" name="recharge-number" placeholder="Enter number" required>
+
+      <label for="recharge-amount">Amount</label>
+      <input type="number" id="recharge-amount" name="recharge-amount" placeholder="Enter amount" required>
+
+      <input type="submit" value="Recharge Now">
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Pay Bill</h2>
+    <form method="post" action="{% url 'billpayment' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Pay Bill">
+</form>
+
+  </div>
+
+  <div class="card">
+    <h2>Pay Toll Gate</h2>
+    <p>Pay your toll gate fees</p>
+    <form>
+      <label for="vehicle-number">Vehicle Number</label>
+      <input type="text" id="vehicle-number" name="vehicle-number" placeholder="Enter vehicle number" required>
+
+      <label for="toll-amount">Amount</label>
+      <input type="number" id="toll-amount" name="toll-amount" placeholder="Enter amount" required>
+
+      <input type="submit" value="Pay Now">
+    </form>
+  </div>
+</div>
+
+  </body>
+</html>
+</html>
